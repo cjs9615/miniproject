@@ -25,12 +25,12 @@ public class FoodTest {
 	@Autowired
 	private PasswordEncoder encoder;
 	
-	//@Test
+	@Test
 	public void testGet() {
 		memRepo.save(Member.builder()
-				.username("member")
+				.username("admin")
 				.password(encoder.encode("abcd"))
-				.role(Role.ROLE_MEMBER)
+				.role(Role.ROLE_ADMIN)
 				.enabled(true).build());
 	}
 	
@@ -43,7 +43,7 @@ public class FoodTest {
 				.build());
 	}
 	
-	@Test
+	//@Test
 	public void testMemberFoodInsert() {
 		for(Long i = 195L ; i <= 199; i++) {
 			memfoodRepo.save(MemberFood.builder()

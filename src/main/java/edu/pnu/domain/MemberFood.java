@@ -33,10 +33,12 @@ public class MemberFood {
 	@ManyToOne
 	@JoinColumn(name="food_id", nullable=false, updatable=false)
 	private Food food;
-	
+
 	private Double gram;
 	
 	private String date;
 	
 	private String time;
+	
+	private String comment;
 }

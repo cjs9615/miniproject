@@ -28,4 +28,7 @@ public class Member {
 	@Enumerated(EnumType.STRING)
 	private Role role;
 	private boolean enabled;
+	private String sex;
+	private Double height;
+	private Double weight;
 }

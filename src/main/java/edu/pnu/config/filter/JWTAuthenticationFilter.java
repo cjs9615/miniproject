@@ -50,23 +50,20 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		User user = (User) authResult.getPrincipal();
 		
 		String token = JWT.create()
-		.withExpiresAt(new Date(System.currentTimeMillis()+1000*60*10))
+		.withExpiresAt(new Date(System.currentTimeMillis()+1000*60*60))
 		.withClaim("username", user.getUsername())
 		.sign(Algorithm.HMAC256("edu.pnu.jwt"));
-		response.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
-		response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-		response.setHeader("Access-Control-Allow-Headers", "Authorization, Content-Type");
-		response.setHeader("Access-Control-Allow-Credentials", "true");
-		response.setHeader("Access-Control-Expose-Headers", "Authorization");
 		
+//		response.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+//		response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+//		response.setHeader("Access-Control-Allow-Headers", "Authorization, Content-Type");
+//		response.setHeader("Access-Control-Allow-Credentials", "true");
+//		response.setHeader("Access-Control-Expose-Headers", "Authorization");
+//		
 		response.addHeader("Authorization", "Bearer " + token);
-		System.out.println(response.getHeader("Authorization"));
-	}
-	
-	@Override
-	protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response,
-			AuthenticationException failed) throws IOException, ServletException {
+		chain.doFilter(request, response);
 		
+//		System.out.println(response.getHeader("Authorization"));
 	}
 
 }
