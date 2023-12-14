@@ -29,7 +29,6 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	// POST/login 요청이 왔을 때 인증을 시도하는 메소드
 	@Override
 	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
-		response.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
 		// request에서 json 타입의 [username/password]를 읽어서 Member 객체를 생성한다. 
 		ObjectMapper mapper = new ObjectMapper();
 		Member member = null;
